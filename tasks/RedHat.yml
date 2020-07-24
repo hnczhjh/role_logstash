@@ -3,7 +3,7 @@
   shell: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 - name: Setting source
-  copy:
+  template:
     src: elasticsearch.repo
     dest: /etc/yum.repos.d/elasticsearch.repo
 
