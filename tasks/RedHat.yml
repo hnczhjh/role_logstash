@@ -5,7 +5,7 @@
 - set_fact: version_package="{{elasticsearch_meta[elasticsearch_version].yum_name}}"
 
 - debug: 
-  var: "version_package"
+  var=version_package
 
 - name: Setting source
   template:
