@@ -4,8 +4,8 @@
 
 - set_fact: version_package="{{elasticsearch_meta[elasticsearch_version].yum_name}}"
 
-- debug: ""
-  msg: Test version_package:{{version_package}}
+- debug: show version_package
+  msg: "Test version_package:{{version_package}}"
 
 - name: Setting source
   template:
