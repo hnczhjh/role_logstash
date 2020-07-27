@@ -2,7 +2,7 @@
 - name: import key
   shell: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-- set_fact: version_package ="{{elasticsearch_meta[elasticsearch_version].yum_name}}"
+- set_fact: version_package="{{elasticsearch_meta[elasticsearch_version].yum_name}}"
 
 - name: Setting source
   template:
