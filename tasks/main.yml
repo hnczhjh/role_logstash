@@ -12,11 +12,11 @@
   shell: sysctl -p
 
 # enable  ipaddress
-- name: enable ipaddress
-  lineinfile:
-    path: /etc/elasticsearch/elasticsearch.yml
-    regexp: '#network.host: 192.168.0.1'
-    line: 'network.host: 0.0.0.0'
+#- name: enable ipaddress
+# lineinfile:
+#    path: /etc/elasticsearch/elasticsearch.yml
+#    regexp: '#network.host: 192.168.0.1'
+#    line: 'network.host: 0.0.0.0'
 
 - name: set cluster.name
   lineinfile:
@@ -36,11 +36,11 @@
 #    create: yes
 #    line: 'cluster.initial_master_nodes: ["node-1"]'
 
-- name: http.port
-  lineinfile:
-    path: /etc/elasticsearch/elasticsearch.yml
-    regexp: '#http.port: 9200'
-    line: 'http.port: 9200'
+#- name: http.port
+#  lineinfile:
+#    path: /etc/elasticsearch/elasticsearch.yml
+#    regexp: '#http.port: 9200'
+#    line: 'http.port: 9200'
     
 #elasticsearch
 - name: set auto_create_index
