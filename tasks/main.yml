@@ -41,6 +41,13 @@
     path: /etc/elasticsearch/elasticsearch.yml
     regexp: '#http.port: 9200'
     line: 'http.port: 9200'
+    
+#elasticsearch
+- name: set auto_create_index
+  lineinfile:
+    path: /etc/elasticsearch/elasticsearch.yml
+    create: yes
+    line: 'action.auto_create_index: {{elasticsearch_create_index}}'
 
 
 #- name: Insert ngnix service  password authority 
