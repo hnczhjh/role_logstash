@@ -2,15 +2,6 @@
 - name: Install this role on {{ansible_os_family}}
   include: "{{ansible_os_family}}.yml"
 
-- name: set viturl memory
-  lineinfile:
-    create: yes
-    path: /etc/sysctl.conf
-    line: 'vm.max_map_count=655360'
-
-- name: sysctl -p
-  shell: sysctl -p
-
 # enable  ipaddress
 #- name: enable ipaddress
 # lineinfile:
