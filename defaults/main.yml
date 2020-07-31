@@ -7,6 +7,10 @@ elasticsearch_clurname: "my-application"
 elasticsearch_create_index: False
 
 elasticsearch_meta:
+  "oss-6.8":
+      yum_name: "6.x"
+      yum_pkg_name_debian: "6.8.10"
+      yum_pkg_name_redhat: "6.8.10-1"
   "7.8":
       yum_name: "7.x"
       yum_pkg_name_debian: "7.8.0"
