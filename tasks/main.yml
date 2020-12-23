@@ -69,7 +69,7 @@
 # must use sudo sh -c to solve the no-root permission
 - block:
   - name: Check Elasticsearch Version
-    shell: sudo sh -c "echo `rpm -qa|grep elasticsearch |sed -n 1p` 1>> /data/logs/install_version.txt"
+    shell: echo "elasticsearch  version:" $(curl -XGET localhost:9200  |grep number |cut -d '"' -f 4)  |sudo tee -a /data/logs/install_version.txt
 
 # check service state
 - name: Check Elasticsearch Service
