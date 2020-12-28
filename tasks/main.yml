@@ -2,13 +2,6 @@
 - name: Install this role on {{ansible_os_family}}
   include: "{{ansible_os_family}}.yml"
 
-# enable  ipaddress
-#- name: enable ipaddress
-# lineinfile:
-#    path: /etc/elasticsearch/elasticsearch.yml
-#    regexp: '#network.host: 192.168.0.1'
-#    line: 'network.host: 0.0.0.0'
-
 - name: set cluster.name
   lineinfile:
     path: /etc/elasticsearch/elasticsearch.yml
