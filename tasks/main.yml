@@ -32,10 +32,10 @@
 # Check version,
 # must use sudo sh -c to solve the no-root permission
 - block:
+  - wait_for: port=9200 delay=10
+  
   - name: Check Elasticsearch Version
-    shell: |
-      sleep 10
-      sudo echo "elasticsearch  version:" $(curl -XGET localhost:9200  |grep number |cut -d '"' -f 4)  |sudo tee -a /data/logs/install_version.txt
+    shell: sudo echo "elasticsearch  version:" $(curl -XGET localhost:9200  |grep number |cut -d '"' -f 4)  |sudo tee -a /data/logs/install_version.txt
 
 # check service state
 - name: Check Elasticsearch Service
