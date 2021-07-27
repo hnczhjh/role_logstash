@@ -1,13 +1,10 @@
-# import key
-- name: import key
-  shell: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+#- name: set soft link
+#  shell: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-- set_fact: version_package="{{elasticsearch_meta[elasticsearch_version].yum_name}}"
+#- name: Setting logstash repo
+#  copy:
+#    src: log.repo
+#    dest: /etc/yum.repos.d/log.repo
 
-- name: Setting source
-  template:
-    src: elasticsearch.repo
-    dest: /etc/yum.repos.d/elasticsearch.repo
-
-- name: install elasticsearch
-  shell: yum install elasticsearch-oss-{{elasticsearch_meta[elasticsearch_version].yum_pkg_name_redhat}} -y
+- name: install logstash
+  shell: sudo yum install logstash -y
