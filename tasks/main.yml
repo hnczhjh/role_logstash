@@ -6,7 +6,7 @@
 - name: enable ipaddress
   lineinfile:
     path: /etc/logstash/logstash.yml
-    regexp: '# http.host: "127.0.0.1"'
+    regexp: '^# http.host: "127.0.0.1"'
     line: 'http.host: "0.0.0.0"'
     state: present
     backrefs: yes
@@ -14,7 +14,7 @@
 - name: http.port
   lineinfile:
     path: /etc/logstash/logstash.yml
-    regexp: '# http.port: 9600-9700'
+    regexp: '^# http.port: 9600-9700'
     line: 'http.port: 9600-9700'
     state: present
     backrefs: yes
@@ -42,7 +42,7 @@
 # must use sudo sh -c to solve the no-root permission
 - block:
   - name: Check logstash Version
-    shell: sudo sh -c "echo `rpm -qa|grep logstash |sed -n 1p` 1>> /data/logs/install_version.txt"
+    shell: sudo sh -c "echo 'logstash version:' `rpm -qa|grep logstash | awk -F "-" '{print $2}'` 1>> /data/logs/install_version.txt"
 
 # check service state
 - name: Check Logstash Service

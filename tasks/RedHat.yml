@@ -1,10 +1,13 @@
-- name: set soft link
+- name: import key
   shell: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-- name: Setting logstash repo
-  copy:
-    src: log.repo
-    dest: /etc/yum.repos.d/log.repo
+- set_fact: version_package="{{logstash_meta[logstash_version].yum_name}}"
 
-- name: install logstash
-  shell: sudo yum install logstash -y
+- name: Setting logstash and kibana source
+  template:
+    src: logstash.repo
+    dest: /etc/yum.repos.d/logstash.repo
+
+- name: Install logstash
+  shell: sudo yum install logstash-{{logstash_meta[logstash_version].yum_pkg_name_redhat}} -y
+  

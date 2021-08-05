@@ -1,5 +1,66 @@
 ---
 - hosts: localhost
   remote_user: root
+  vars_files:
+    ../vars/main.yml
   roles:
-    - role_elasticsearch
+    - role_logstash
+  vars_prompt:   
+    - name: 'logstash_version_selection'
+      prompt: "\nPlease choose the number for logstash version [ 1/2/../24] \n\n
+      1: logstash6.0\n
+      2: logstash6.1\n
+      3: logstash6.2\n
+      4: logstash6.3\n
+      5: logstash6.4\n
+      6: logstash6.5\n
+      7: logstash6.6\n
+      8: logstash6.7\n
+      9: logstash6.8\n
+      10: logstash7.0\n
+      11: logstash7.1\n
+      12: logstash7.2\n
+      13: logstash7.3\n
+      14: logstash7.4\n
+      15: logstash7.5\n
+      16: logstash7.6\n
+      17: logstash7.7\n
+      18: logstash7.8\n
+      19: logstash7.9\n
+      20: logstash7.10\n
+      21: logstash7.11\n
+      22: logstash7.12\n
+      23: logstash7.13\n
+      24: logstash7.14\n"
+      private: no
+      default: 24
+
+  vars:
+    logstash_version_select:
+      '1': '6.0'
+      '2': '6.1'
+      '3': '6.2'
+      '4': '6.3'
+      '5': '6.4'
+      '6': '6.5'
+      '7': '6.6'
+      '8': '6.7'
+      '9': '6.8'
+      '10': '7.0'
+      '11': '7.1'
+      '12': '7.2'
+      '13': '7.3'
+      '14': '7.4'
+      '15': '7.5'
+      '16': '7.6'
+      '17': '7.7'
+      '18': '7.8'
+      '19': '7.9'
+      '20': '7.10'
+      '21': '7.11'
+      '22': '7.12'
+      '23': '7.13'
+      '24': '7.14'
+
+    logstash_version: "{{logstash_version_select[logstash_version_selection]}}"
+    
