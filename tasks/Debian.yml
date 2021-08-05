@@ -5,8 +5,6 @@
 - name: Installing from the APT repositoryedit
   shell: sudo apt-get install apt-transport-https
 
-- set_fact: version_package="{{logstash_meta[logstash_version].yum_name}}"
-
 - name: Save the logstash repository definition
   shell: echo "deb https://artifacts.elastic.co/packages/{{logstash_meta[logstash_version].yum_name}}/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-{{logstash_meta[logstash_version].yum_name}}.list
 
